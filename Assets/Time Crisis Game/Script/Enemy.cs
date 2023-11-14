@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    
+    public UnityEvent<Enemy> EnemyDestroyed;
 
     void Start()
     {
@@ -18,5 +23,12 @@ public class Enemy : MonoBehaviour
         bullet.GetComponent<Rigidbody>().AddForce(dir.normalized * 750);
 
         Invoke("Shoot", Random.Range(1, 10));
+    }
+
+    public void DestroyEnemy()
+    {
+        EnemyDestroyed?.Invoke(this);
+        
+        Destroy(gameObject);
     }
 }

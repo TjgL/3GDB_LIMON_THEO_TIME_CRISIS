@@ -15,11 +15,13 @@ GameObject:
   - component: {fileID: 7305109825589942873}
   - component: {fileID: 1377323136200540804}
   - component: {fileID: 3962835823799979546}
+  - component: {fileID: 1044316671614541975}
   - component: {fileID: 1295758746391006768}
   - component: {fileID: 955365275858639756}
   - component: {fileID: -3000287394680780245}
+  - component: {fileID: 8956817967658712257}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy.2hp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3964636914210219000}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -68,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7d15db9562d9e6a47ac61720583d52e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,9 +171,9 @@ MonoBehaviour:
   EventTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -3000287394680780245}
-        m_TargetAssemblyTypeName: SimpleTimer, Assembly-CSharp
-        m_MethodName: StartTimer
+      - m_Target: {fileID: 8956817967658712257}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Shoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -188,6 +190,18 @@ MonoBehaviour:
   hasPhysics: 0
   reactToTags:
   - Bullet
+--- !u!114 &1044316671614541975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964636914210219000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbade14ea7cccf84a99645b591cd03d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &1295758746391006768
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5076,9 +5090,9 @@ MonoBehaviour:
   EventOnTimerComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1377323136200540804}
-        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
-        m_MethodName: DestroyEnemy
+      - m_Target: {fileID: 1044316671614541975}
+        m_TargetAssemblyTypeName: Destroy, Assembly-CSharp
+        m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5088,3 +5102,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8956817967658712257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964636914210219000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f0a8e071a9b9843a8d96a59e4bc2d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventReloaded:
+    m_PersistentCalls:
+      m_Calls: []
+  EventOutOfAmmo:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3000287394680780245}
+        m_TargetAssemblyTypeName: SimpleTimer, Assembly-CSharp
+        m_MethodName: StartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  EventShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  EventHitTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  bulletPrefab: {fileID: 0}
+  maxAmmo: 2
+  startLife: 2

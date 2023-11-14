@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7681026297421483237}
   - component: {fileID: 2752159371294952210}
   - component: {fileID: 60629686556884081}
+  - component: {fileID: 8356406928640937599}
+  - component: {fileID: 6835191613658715080}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -133,3 +135,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8356406928640937599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7585604138824830809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453e0c157c1d81245a0d851894d22174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6835191613658715080}
+        m_TargetAssemblyTypeName: Destroy, Assembly-CSharp
+        m_MethodName: DestroyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  EventTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onlyOnce: 0
+  hasPhysics: 1
+  reactToTags:
+  - Untagged
+--- !u!114 &6835191613658715080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7585604138824830809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbade14ea7cccf84a99645b591cd03d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

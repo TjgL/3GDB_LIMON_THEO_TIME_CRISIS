@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] areasRoots;
     int currentArea;
     Player player;
+    
+    private List<Enemy> _enemies = new List<Enemy>();
 
     public float baseRemainingTime = 20;
     float remainingTime;
@@ -48,7 +50,18 @@ public class GameManager : MonoBehaviour
     {
         areasRoots[areaID].SetActive(true);
         player.SetAreaPositions(areasRoots[areaID].transform.Find("PlayerPos"), areasRoots[areaID].transform.Find("CoverPos"));
+        _enemies.AddRange(areasRoots[currentArea].GetComponentsInChildren<Enemy>());
         EventPlayerEnterArea.Invoke();
+    }
+    
+    public void OnEnemyDestroyed(Enemy enemy)
+    {
+        _enemies.Remove(enemy);
+        
+        if(_enemies.Count == 0)
+        {
+            OnAreaCleared();
+        }
     }
 
     void OnAreaCleared()
